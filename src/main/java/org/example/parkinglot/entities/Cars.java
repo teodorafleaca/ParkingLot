@@ -13,8 +13,7 @@ public class Cars {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToMany(mappedBy = "owner", orphanRemoval = true)
-    private List<Cars> cars = new ArrayList<>();
+
 
     @Column(name = "license_plate")
     private String licensePlate;
@@ -24,21 +23,15 @@ public class Cars {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "owner_id", nullable = false)
-    private Cars owner;
+    private User owner;
 
-    public List<Cars> getCars() {
-        return cars;
-    }
 
-    public void setCars(List<Cars> cars) {
-        this.cars = cars;
-    }
 
-    public Cars getOwner() {
+    public User getOwner() {
         return owner;
     }
 
-    public void setOwner(Cars owner) {
+    public void setOwner(User owner) {
         this.owner = owner;
     }
 
@@ -66,4 +59,7 @@ public class Cars {
         this.id = id;
     }
 
+    public String getUsername() {
+        return owner.getUsername();
+    }
 }
