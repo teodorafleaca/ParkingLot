@@ -1,4 +1,4 @@
-package com.parkinglot.parkinglot.common;
+package com.parking.parkinglot.common;
 
 public class UserDto {
     Long id;

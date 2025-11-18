@@ -1,4 +1,4 @@
-package org.example.parkinglot.entities;
+package com.parking.parkinglot.entities;
 
 import jakarta.persistence.*;
 
@@ -56,13 +56,13 @@ public class User {
     }
 
     @OneToMany(mappedBy = "owner", orphanRemoval = true)
-    private List<Cars> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
 
-    public List<Cars> getCars() {
+    public List<Car> getCars() {
         return cars;
     }
 
-    public void setCars(List<Cars> cars) {
+    public void setCars(List<Car> cars) {
         this.cars = cars;
     }
 

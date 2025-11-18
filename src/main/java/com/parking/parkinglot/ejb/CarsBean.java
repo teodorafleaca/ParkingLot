@@ -1,13 +1,13 @@
 package com.parking.parkinglot.ejb;
 
-import com.parkinglot.parkinglot.common.CarDto;
+import com.parking.parkinglot.common.CarDto;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.EntityManager;
 
 import jakarta.persistence.TypedQuery;
-import org.example.parkinglot.entities.Cars;
+import com.parking.parkinglot.entities.Car;
 
 
 import java.util.ArrayList;
@@ -24,8 +24,8 @@ public class CarsBean {
 
     public List<CarDto> findAllCars(){
         LOG.info("findAllCars");
-        try{TypedQuery<Cars> typedQuery = entityManager.createQuery("SELECT c FROM Cars c", Cars.class);
-            List<Cars> cars = typedQuery.getResultList();
+        try{TypedQuery<Car> typedQuery = entityManager.createQuery("SELECT c FROM Car c", Car.class);
+            List<Car> cars = typedQuery.getResultList();
             return copyCarsToDto(cars);
 
         } catch (Exception ex){
@@ -34,10 +34,10 @@ public class CarsBean {
 
     }
 
-    public List<CarDto> copyCarsToDto(List<Cars> cars) {
+    public List<CarDto> copyCarsToDto(List<Car> cars) {
         List<CarDto> carDtos = new ArrayList<>();
 
-        for (Cars car : cars) {
+        for (Car car : cars) {
             // Obținem datele folosind getterii entității Car
             Long id = car.getId();
             String licensePlate = car.getLicensePlate();

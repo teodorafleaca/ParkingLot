@@ -1,7 +1,7 @@
-package servlets;
+package com.parking.parkinglot.servlets;
 
 import com.parking.parkinglot.ejb.CarsBean;
-import com.parkinglot.parkinglot.common.CarDto;
+import com.parking.parkinglot.common.CarDto;
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
