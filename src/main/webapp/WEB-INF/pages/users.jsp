@@ -1,16 +1,18 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Teodora Fleaca
-  Date: 11/17/2025
-  Time: 7:30 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:pageTemplate pageTitle="Users">
     <h1>Users</h1>
+
+    <!-- Afișăm butonul doar dacă utilizatorul are WRITE_USERS -->
+    <c:if test="${pageContext.request.isUserInRole('WRITE_USERS')}">
+        <a href="${pageContext.request.contextPath}/AddUser"
+           class="btn btn-primary btn-lg mb-3">
+            Add User
+        </a>
+    </c:if>
+
     <div class="container text-center">
         <div class="row fw-bold border-bottom pb-2 mb-2">
             <div class="col">Username</div>
