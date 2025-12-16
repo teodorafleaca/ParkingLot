@@ -99,4 +99,24 @@ public class UserBean {
             entityManager.persist(userGroup);
         }
     }
+    public Collection<String> findUsernamesByUserIds(Collection<Long> userIds) {
+        LOG.info("findUsernamesByUserIds");
+
+        if (userIds == null || userIds.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        try {
+            return entityManager.createQuery(
+                            "SELECT u.username FROM User u WHERE u.id IN :userIds",
+                            String.class)
+                    .setParameter("userIds", userIds)
+                    .getResultList();
+
+        } catch (Exception ex) {
+            throw new EJBException(ex);
+        }
+    }
+
+
 }
